@@ -13,6 +13,7 @@
 		67948FB1234E18CE00AADD91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67948FB0234E18CE00AADD91 /* Assets.xcassets */; };
 		67948FB4234E18CE00AADD91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67948FB3234E18CE00AADD91 /* Preview Assets.xcassets */; };
 		67948FB7234E18CE00AADD91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67948FB5234E18CE00AADD91 /* LaunchScreen.storyboard */; };
+		67948FBF234E18FC00AADD91 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67948FBE234E18FC00AADD91 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		67948FB3234E18CE00AADD91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		67948FB6234E18CE00AADD91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67948FB8234E18CE00AADD91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67948FBE234E18FC00AADD91 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				67948FB5234E18CE00AADD91 /* LaunchScreen.storyboard */,
 				67948FB8234E18CE00AADD91 /* Info.plist */,
 				67948FB2234E18CE00AADD91 /* Preview Content */,
+				67948FBE234E18FC00AADD91 /* MapView.swift */,
 			);
 			path = "MapKit-SwiftUI";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67948FAB234E18CD00AADD91 /* AppDelegate.swift in Sources */,
+				67948FBF234E18FC00AADD91 /* MapView.swift in Sources */,
 				67948FAD234E18CD00AADD91 /* SceneDelegate.swift in Sources */,
 				67948FAF234E18CD00AADD91 /* ContentView.swift in Sources */,
 			);
