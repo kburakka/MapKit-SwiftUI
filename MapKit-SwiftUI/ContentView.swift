@@ -29,9 +29,9 @@ struct ContentView: View {
     @State var selectedLandmark: Landmark? = nil
     @State private var showingAlert = false
     @State private var convertedPoint: CGPoint? = nil
+    @State var isList: Bool = false
 
     var body: some View {
-        
         ZStack {
             MapView(landmarks: $landmarks,
                     selectedLandmark: $selectedLandmark, convertedPoint: $convertedPoint)
@@ -78,14 +78,28 @@ struct ContentView: View {
                             self.showingAlert = false
                         }) {
                             Text("DONE")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .padding()
-                                .background(Color.green)
+                                .background(Color.white)
                                 .cornerRadius(8)
                                 .shadow(radius: 3)
                                 .padding(.bottom)
                         }
                     }
+                    
+                    Button(action: {
+                        self.isList = true
+                    }) {
+                        Text("LIST")
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .shadow(radius: 3)
+                            .padding(.bottom)
+                    }.sheet(isPresented: $isList, content: {
+                        ListView(landmarks: self.$landmarks)
+                    })
                 }
             }
             if showingAlert{
