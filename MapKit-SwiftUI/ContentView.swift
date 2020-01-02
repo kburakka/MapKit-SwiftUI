@@ -98,7 +98,7 @@ struct ContentView: View {
                             .shadow(radius: 3)
                             .padding(.bottom)
                     }.sheet(isPresented: $isList, content: {
-                        ListView(landmarks: self.$landmarks)
+                        ListView(landmarks: self.$landmarks, selectedLandmark: self.$selectedLandmark)
                     })
                 }
             }
