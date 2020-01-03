@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ListView: View {
-    @Binding var landmarks: [Landmark]
+    @ObservedObject var landmarks = Landmarks()
     @State var isContent: Bool = false
     @State private var convertedPoint: CGPoint? = nil
     @Binding var selectedLandmark: Landmark?
@@ -17,12 +17,13 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             List() {
-                ForEach(landmarks.indices) { i in
-                    Text("\(self.landmarks[i].name)").onTapGesture {
+                ForEach(landmarks.landMarks.indices) { i in
+                    Text("\(self.landmarks.landMarks[i].name)").onTapGesture {
                         self.isContent = true
-                        self.selectedLandmark = self.landmarks[i]
+                        self.selectedLandmark = self.landmarks.landMarks[i]
                     }.sheet(isPresented: self.$isContent, content: {
-                        ContentView(landmarks: self.landmarks, counter: 0, selectedLandmark: self.selectedLandmark, isList: false)
+                        ContentView(counter: 0, selectedLandmark: self.selectedLandmark, isList: false)
+//                        ContentView(landmarks: self.landmarks, counter: 0, selectedLandmark: self.selectedLandmark, isList: false)
                     })
                 }
             }

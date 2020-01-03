@@ -22,16 +22,18 @@ final class LandmarkAnnotation: NSObject, MKAnnotation {
     }
 }
 
+let map = MKMapView()
+
 struct MapView: UIViewRepresentable {
-    @Binding var landmarks: [Landmark]
+    @ObservedObject var landmarks = Landmarks()
     @Binding var selectedLandmark: Landmark?
     @Binding var convertedPoint: CGPoint?
 
     func makeUIView(context: Context) -> MKMapView {
-        let map = MKMapView()
         map.delegate = context.coordinator
         return map
     }
+    
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         updateAnnotations(from: uiView)
@@ -40,7 +42,7 @@ struct MapView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
+
     final class Coordinator: NSObject, MKMapViewDelegate {
         var control: MapView
         
@@ -48,6 +50,7 @@ struct MapView: UIViewRepresentable {
             self.control = control
         }
         
+    
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             guard let coordinates = view.annotation?.coordinate else { return }
             let span = mapView.region.span
@@ -72,7 +75,7 @@ struct MapView: UIViewRepresentable {
     
     private func updateAnnotations(from mapView: MKMapView) {
         mapView.removeAnnotations(mapView.annotations)
-        let newAnnotations = landmarks.map { LandmarkAnnotation(landmark: $0) }
+        let newAnnotations = landmarks.landMarks.map { LandmarkAnnotation(landmark: $0) }
         mapView.addAnnotations(newAnnotations)
         if let selectedAnnotation = newAnnotations.filter({ $0.id == selectedLandmark?.id }).first {
             mapView.selectAnnotation(selectedAnnotation, animated: true)
